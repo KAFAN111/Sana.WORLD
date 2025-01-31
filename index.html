@@ -4,45 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منور حجي بموقعي الشخصي</title>
+    <style>
+        /* تنسيق الشريط الجانبي */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #111;
+            color: white;
+            padding-top: 20px;
+        }
+
+        #sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            border-bottom: 1px solid #444;
+        }
+
+        #sidebar a:hover {
+            background-color: #575757;
+        }
+
+        /* تنسيق الصورة المعروضة */
+        #image-container {
+            margin-left: 270px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+
+        /* تنسيق النص */
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+
+        header {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        section p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* تنسيق النص الصغير تحت الصورة */
+        .footer-text {
+            font-size: 12px;
+            text-align: center;
+            color: gray;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- الشريط الجانبي -->
+    <div id="sidebar">
+        <a href="#" onclick="changeImage('IMG_20250201_000351_586.jpg')">الصورة 1</a>
+        <a href="#" onclick="changeImage('IMG_20250201_004135_613.jpg')">الصورة 2</a>
+    </div>
+
+    <!-- رأس الصفحة -->
     <header>
         <h1>حجي اليوم رح احجي لك قصه السانا المتناجه ونايجها حسين.</h1>
     </header>
+
+    <!-- منطقة المحتوى -->
     <section>
         <!-- النص الطويل -->
         <p>
-            كان يوم من الايام حسين العراقي
-            زبه قايم ف شاف وحده طيزها كبيره اسمها
-            (سانا) ف راح كلمها وهي مقطوعه من شجره
-            اخذها بيته وقعد يتعاطف معها مرت الايام
-            وهو قاعد يكلمها ويتعاطف معها
-            وجات مرا غدر فيها من ورا ....
-            ف هي ارتاحت نفسياً وعقلياً وجسدياً
-            وطيزياً وكسياً وزبياً وقعدت تصيح اه اه اه كسي
-            اتركني كسي يامعود مع انها متعوده عالنيج
-            بس نيجه حسين العراقي لها غير
-            لانه زبه طويل وقوي ويصدم 
-            وهو مدرب زبه على ظروف الطيز المفتوحه والضيقه
+            كان يوم من الايام حسين العراقي زبه قايم ف شاف وحده طيزها كبيره اسمها (سانا) ف راح كلمها وهي مقطوعه من شجره
+            اخذها بيته وقعد يتعاطف معها مرت الايام وهو قاعد يكلمها ويتعاطف معها وجات مرا غدر فيها من ورا ....
+            ف هي ارتاحت نفسياً وعقلياً وجسدياً وطيزياً وكسياً وزبياً وقعدت تصيح اه اه اه كسي اتركني كسي يامعود مع انها متعوده عالنيج
+            بس نيجه حسين العراقي لها غير لانه زبه طويل وقوي ويصدم وهو مدرب زبه على ظروف الطيز المفتوحه والضيقه
             ومدرب على كس امها وبس هذه هي القصه اتمنى عجبتك وسوف يكون هناك اجزاء اخرى....
         </p>
-        
+
         <!-- النص الجديد فوق الصورة -->
         <p>
             هذه صوره لحساب الانستا الخاص ب سانا المتناجه اتمنى منك ان تشتمها
         </p>
-        
+
         <!-- الصورة -->
-        <img src="IMG_20250201_004135_613.jpg" alt="صورة مميزة" width="300" height="auto">
-        
+        <div id="image-container">
+            <img id="current-image" src="IMG_20250201_000351_586.jpg" alt="صورة مميزة" width="300" height="auto">
+        </div>
+
         <!-- النص الصغير تحت الصورة -->
-        <p style="font-size: 12px; text-align: center; color: gray;">
-            الراوي: كفن/بيبرس
-             نايج سانا:حسين العراقي العظيم وهذا رابط حسابه الانستا اتمنى ان تدعمه
-            https://www.instagram.com/lo__cas44?igsh=eWtwZTN3c3JqdDNj
-            واحد ماله علاقه بالقصه بس ادعمه عشاني :)
-            https://www.instagram.com/odjdi87_87?igsh=aHppZWJmbmo4YWYw
+        <p class="footer-text">
+            الراوي: كفن/بيبرس <br>
+            نايج سانا: حسين العراقي العظيم وهذا رابط حسابه الانستا اتمنى ان تدعمه <br>
+            <a href="https://www.instagram.com/lo__cas44?igsh=eWtwZTN3c3JqdDNj" target="_blank">رابط حساب حسين على إنستاجرام</a><br>
+            واحد ماله علاقه بالقصه بس ادعمه عشاني :) <br>
+            <a href="https://www.instagram.com/odjdi87_87?igsh=aHppZWJmbmo4YWYw" target="_blank">رابط حساب كفن/بيبرس على إنستاجرام</a>
         </p>
     </section>
+
+    <!-- جافا سكربت لتبديل الصور -->
+    <script>
+        // دالة لتغيير الصورة عند النقر على الرابط
+        function changeImage(imageName) {
+            document.getElementById('current-image').src = imageName;
+        }
+
+        // دالة لتبديل الصورة تلقائياً
+        let currentImageIndex = 0;
+        const images = ['IMG_20250201_000351_586.jpg', 'IMG_20250201_004135_613.jpg'];
+
+        function autoChangeImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            document.getElementById('current-image').src = images[currentImageIndex];
+        }
+
+        // تبديل الصور تلقائيًا كل 5 ثواني
+        setInterval(autoChangeImage, 5000);
+    </script>
+
 </body>
 </html>
