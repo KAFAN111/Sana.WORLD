@@ -5,36 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منور حجي بموقعي الشخصي</title>
     <style>
-        /* تنسيق الشريط الجانبي */
-        #sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #111;
-            color: white;
-            padding-top: 20px;
-        }
-
-        #sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 18px;
-            color: white;
-            display: block;
-            border-bottom: 1px solid #444;
-        }
-
-        #sidebar a:hover {
-            background-color: #575757;
-        }
-
         /* تنسيق الصورة المعروضة */
         #image-container {
-            margin-left: 270px;
-            padding: 20px;
             text-align: center;
+            margin-top: 50px;
         }
 
         #image-container img {
@@ -43,10 +17,24 @@
             border: 1px solid #ddd;
         }
 
+        /* تنسيق الأقواس */
+        .nav-buttons {
+            font-size: 30px;
+            cursor: pointer;
+            color: #555;
+            padding: 10px;
+        }
+
+        .nav-buttons:hover {
+            color: #000;
+        }
+
         /* تنسيق النص */
         body {
             font-family: Arial, sans-serif;
             direction: rtl;
+            margin: 0;
+            padding: 0;
         }
 
         header {
@@ -56,7 +44,6 @@
         }
 
         section {
-            margin-left: 270px;
             padding: 20px;
         }
 
@@ -65,21 +52,16 @@
             line-height: 1.6;
         }
 
-        /* تنسيق النص الصغير تحت الصورة */
+        /* النص الصغير تحت الصورة */
         .footer-text {
             font-size: 12px;
             text-align: center;
             color: gray;
         }
+
     </style>
 </head>
 <body>
-
-    <!-- الشريط الجانبي -->
-    <div id="sidebar">
-        <a href="#" onclick="changeImage('IMG_20250201_000351_586.jpg')">الصورة 1</a>
-        <a href="#" onclick="changeImage('IMG_20250201_004135_613.jpg')">الصورة 2</a>
-    </div>
 
     <!-- رأس الصفحة -->
     <header>
@@ -102,9 +84,11 @@
             هذه صوره لحساب الانستا الخاص ب سانا المتناجه اتمنى منك ان تشتمها
         </p>
 
-        <!-- الصورة -->
+        <!-- الصور مع الأقواس للتبديل -->
         <div id="image-container">
+            <span class="nav-buttons" onclick="changeImage(-1)">&lt;</span>
             <img id="current-image" src="IMG_20250201_000351_586.jpg" alt="صورة مميزة" width="300" height="auto">
+            <span class="nav-buttons" onclick="changeImage(1)">&gt;</span>
         </div>
 
         <!-- النص الصغير تحت الصورة -->
@@ -119,18 +103,28 @@
 
     <!-- جافا سكربت لتبديل الصور -->
     <script>
-        // دالة لتغيير الصورة عند النقر على الرابط
-        function changeImage(imageName) {
-            document.getElementById('current-image').src = imageName;
-        }
-
-        // دالة لتبديل الصورة تلقائياً
-        let currentImageIndex = 0;
+        // مسارات الصور
         const images = ['IMG_20250201_000351_586.jpg', 'IMG_20250201_004135_613.jpg'];
 
-        function autoChangeImage() {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
+        let currentImageIndex = 0;
+
+        // دالة لتغيير الصورة عند النقر على الأقواس
+        function changeImage(direction) {
+            currentImageIndex += direction;
+
+            if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1; // العودة إلى آخر صورة إذا كانت الحالية هي الأولى
+            } else if (currentImageIndex >= images.length) {
+                currentImageIndex = 0; // العودة إلى أول صورة إذا كانت الحالية هي الأخيرة
+            }
+
+            // تغيير مصدر الصورة المعروضة
             document.getElementById('current-image').src = images[currentImageIndex];
+        }
+
+        // دالة لتبديل الصورة تلقائيًا
+        function autoChangeImage() {
+            changeImage(1); // التبديل إلى الصورة التالية
         }
 
         // تبديل الصور تلقائيًا كل 5 ثواني
